@@ -135,7 +135,7 @@ const main = async () => {
     return {
       pool: `morpho-compound-${marketFromGraph.token.address}`,
       chain: 'ethereum',
-      project: 'morpho',
+      project: 'morpho-compound',
       symbol: utils.formatSymbol(marketFromGraph.token.symbol),
       apyBase: avgSupplyAPY * 100,
       apyReward: avgCompSupplyAPY * 100,
