@@ -1,8 +1,11 @@
 const utils = require('../utils');
 const { gql, request } = require('graphql-request');
 
+SECONDS_PER_YEAR =  31536000
 
+const ETHIX_TOKEN = '0xFd09911130e6930Bf87F2B0554c44F400bD80D3e';
 const UNISWAP_LP_ETHIXWETH = '0xb14b9464b52F502b0edF51bA3A529bC63706B458';
+const STAKED_UNISWAP_LP_CONTRACT = '0x89cea15F68950DF830dFE3630d635a9eD79478F5';
 const BALANCER_LP_ETHIXDAI = '0x69183d2ce96B6b8962f3013e0Af4545F26F00293';
 const UBESWAP_LP_ETHIXCUSD = '0x62cfA295864cfF683CDE9B47D4bACC77B885DdB7';
 const SYMMETRIC_LP_ETHIXCELO = '0xaD2F9f4CD2Ae4f2dD2841EB1ea7e162fb4767D4D';
@@ -30,6 +33,15 @@ const poolsFunction = async () => {
   }
   `;
 
+  lpPrice = divideBNWithDecimals(ethixBalanceInPool.mul(2), totalSupply)totalTokens = totalSupply * lpPrice
+  const ethixPerDayPerStkToken = divideBNWithDecimals(token.emissionsPerDay, totalTokens)
+  token.ethixPerDayPerStkToken
+  ? token.ethixPerDayPerStkToken.mul(365).mul(100)
+  : BigNumber.from(0)
+
+  assets = assets(STAKED_UNISWAP_LP_CONTRACT)
+  (assets.emmisionPerSencond)
+
   const uniswapPoolData = await request(uniswapUrl, tvlUSDQuery);
 
   const uniswapPool = {
@@ -39,6 +51,9 @@ const poolsFunction = async () => {
     symbol: utils.formatSymbol('ETHIX/WETH'),
     tvlUsd: Number(uniswapPoolData.pair.reserveUSD), 
     apyBase: apyData.deposit_apy * 100,
+    apyReward: ,
+    rewardTokens: [ETHIX_TOKEN], 
+    underlyingTokens: [ETHIX_TOKEN]
   };
 
   const balancerPool = {
